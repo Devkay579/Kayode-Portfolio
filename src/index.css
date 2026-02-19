@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #F5F2E8;
+  color: #2D2D2D;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+/* Glitch effect with primary color */
+.glitch {
+  position: relative;
+  animation: glitch 1s infinite;
+}
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  width: 100%;
+  text-align: inherit;
+  color: #8B5CF6; /* primary */
+}
+.glitch::before {
+  animation: glitchTop 1s infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+}
+.glitch::after {
+  animation: glitchBottom 1s infinite;
+  clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+}
+
+@keyframes glitch {
+  2%, 64% { transform: translate(2px,0) skew(0deg); }
+  4%, 60% { transform: translate(-2px,0) skew(0deg); }
+  62% { transform: translate(0,0) skew(5deg); }
+}
+@keyframes glitchTop {
+  2%,64%{ transform: translate(2px,-2px); }
+  4%,60%{ transform: translate(-2px,2px); }
+  62%{ transform: translate(13px,-1px) skew(-13deg); }
+}
+@keyframes glitchBottom {
+  2%,64%{ transform: translate(-2px,0); }
+  4%,60%{ transform: translate(-2px,0); }
+  62%{ transform: translate(-22px,5px) skew(21deg); }
+}
+
+/* Blob animation (for hero background) */
+@keyframes blob {
+  0% { transform: scale(1); }
+  33% { transform: scale(1.1); }
+  66% { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+.animate-blob {
+  animation: blob 7s infinite;
+}
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+/* 3D transform helpers */
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+.perspective-\[1000px\] {
+  perspective: 1000px;
+}
+@layer base {
+  body {
+    @apply font-sans;
+  }
+}
+.clip-path-torn {
+  clip-path: polygon(100% 0, 0 100%, 100% 100%);
+}
+.clip-path-corner {
+  clip-path: polygon(0 100%, 100% 100%, 0 0);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #F5F2E8;
+}
+::-webkit-scrollbar-thumb {
+  background: #2C5F4A;
+  border-radius: 5px;
+  border: 2px solid #F5F2E8;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #1E4A3A;
+}
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #2C5F4A #F5F2E8;
+}
