@@ -30,8 +30,8 @@ const Hero = () => {
               View Work
             </motion.a>
             <motion.a
-              href="/resume.pdf"
-              download
+              href="/cv/Kayode-Ogbetah-CV.pdf"
+              download="Kayode-Ogbetah-CV.pdf"
               whileHover={{ scale: 1.05 }}
               className="bg-[#2D2D2D] text-[#F5F2E8] px-8 py-3 rounded-lg font-medium hover:bg-[#1E1E1E] transition"
             >
@@ -53,7 +53,7 @@ const Hero = () => {
           {/* Main image container */}
           <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 mx-auto rounded-full overflow-hidden border-4 border-[#2C5F4A] shadow-xl">
             <img
-              src="/kayode-avatar.jpg" 
+              src="/images/kay.jpg" 
               alt="Kayode"
               className="w-full h-full object-cover"
             />
@@ -63,14 +63,14 @@ const Hero = () => {
           <motion.div
             animate={{ y: [0, -8, 0] }}
             transition={{ repeat: Infinity, duration: 3 }}
-            className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 w-12 h-12 sm:w-14 sm:h-14 bg-[#2C5F4A]/10 rounded-full flex items-center justify-center text-[#2C5F4A] font-bold border border-[#2C5F4A] backdrop-blur-sm text-sm sm:text-base"
+            className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 w-12 h-12 sm:w-14 sm:h-14 bg-[#2C5F4A]/10 rounded-full flex items-center justify-center text-[#2C5F4A] font-bold border border-[#2C5F4A] backdrop-blur-sm text-sm sm:text-base will-change-transform"
           >
             <span>2+</span>
           </motion.div>
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ repeat: Infinity, duration: 4 }}
-            className="absolute -bottom-1 -left-1 sm:-bottom-2 sm:-left-2 w-8 h-8 sm:w-10 sm:h-10 bg-[#2C5F4A]/10 rounded-full flex items-center justify-center text-[#2C5F4A] border border-[#2C5F4A] backdrop-blur-sm"
+            className="absolute -bottom-1 -left-1 sm:-bottom-2 sm:-left-2 w-8 h-8 sm:w-10 sm:h-10 bg-[#2C5F4A]/10 rounded-full flex items-center justify-center text-[#2C5F4A] border border-[#2C5F4A] backdrop-blur-sm will-change-transform"
           >
             <span className="text-xs sm:text-sm"></span>
           </motion.div>

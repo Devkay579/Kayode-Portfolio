@@ -1,11 +1,16 @@
 import SectionWrapper from '../ui/SectionWrapper';
+import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { 
   SiReact, SiTypescript, SiNestjs, SiPrisma, 
   SiTailwindcss, SiFramer, SiPostgresql, SiNodedotjs 
 } from 'react-icons/si';
 
-const skills = [
+
+
+const Skills = () => {
+
+  const skills = useMemo(() => [
   { name: 'React', icon: SiReact, color: '#61DAFB' },
   { name: 'TypeScript', icon: SiTypescript, color: '#3178C6' },
   { name: 'NestJS', icon: SiNestjs, color: '#E0234E' },
@@ -14,9 +19,9 @@ const skills = [
   { name: 'Framer', icon: SiFramer, color: '#0055FF' },
   { name: 'PostgreSQL', icon: SiPostgresql, color: '#336791' },
   { name: 'Node.js', icon: SiNodedotjs, color: '#339933' },
-];
+], []);
 
-const Skills = () => {
+
   return (
     <section id="skills" className="py-20 px-4 bg-[#E8E2D5]">
       <div className="container mx-auto max-w-5xl">

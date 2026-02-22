@@ -9,15 +9,21 @@ const Navbar = () => {
   const { muted, toggleMute } = useSoundStore();
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 50);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close menu when clicking a link
-  const handleLinkClick = () => {
-    setIsOpen(false);
-  };
+  const handleLinkClick = () => setIsOpen(false);
 
   return (
     <nav
@@ -32,13 +38,13 @@ const Navbar = () => {
         <a
           href="#hero"
           onClick={handleLinkClick}
-          className="relative group outline-none"
+          className="relative group outline-none block w-8 h-8"
           aria-label="Go to top"
         >
           <img
-            src="/logo.svg"
+            src="/images/kay.jpg"
             alt="Kayode Ogbetah"
-            className="h-8 w-auto transition-transform duration-300 group-hover:scale-110"
+            className="w-full h-full object-cover rounded-full transition-transform duration-300 group-hover:scale-110"
           />
         </a>
 

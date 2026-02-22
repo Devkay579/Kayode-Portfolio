@@ -1,61 +1,128 @@
-import { motion } from 'framer-motion';
+import React from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, ExternalLink } from 'lucide-react';
+import { ArrowLeft, Calendar, User, Github, ExternalLink } from 'lucide-react';
 
 const Portfolio2Realm = () => {
   const navigate = useNavigate();
+  const shouldReduceMotion = useReducedMotion();
+
+  const features = [
+    'Full authentication system (JWT)',
+    'Product catalog with search and filters',
+    'Shopping cart with local storage persistence',
+    'Stripe payment integration',
+    'Admin dashboard for product management',
+    'Order history for users',
+  ];
+
+  const techStack = [
+    'React + Redux Toolkit',
+    'Node.js + Express',
+    'MongoDB + Mongoose',
+    'Stripe API',
+    'Tailwind CSS',
+    'JWT authentication',
+  ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black to-gray-900 p-8">
-      <button
-        onClick={() => navigate('/')}
-        className="mb-8 flex items-center gap-2 text-green-400 hover:text-green-300"
-      >
-        <ArrowLeft size={20} /> Back to portals
-      </button>
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="max-w-4xl mx-auto"
-      >
-        <h1 className="text-5xl font-bold glitch mb-6" data-text="E-COMMERCE PLATFORM">E-COMMERCE PLATFORM</h1>
-        <p className="text-xl text-gray-300 mb-8">
-          A full‑stack online store with product management and checkout.
-        </p>
-        <div className="grid md:grid-cols-2 gap-8">
-          <div className="bg-gray-800 p-6 rounded-lg border border-cyan-500">
-            <h2 className="text-2xl text-cyan-400 mb-4">Features</h2>
-            <ul className="space-y-2 text-gray-300">
-              <li>User authentication</li>
-              <li>Product catalog with search</li>
-              <li>Shopping cart & Stripe payments</li>
-              <li>Admin dashboard</li>
-            </ul>
+    <div className="min-h-screen bg-[#F5F2E8] pt-20 pb-8 px-4 md:pt-24 md:pb-12">
+      <div className="container mx-auto max-w-5xl">
+        <motion.button
+          onClick={() => navigate('/')}
+          className="mb-6 md:mb-8 flex items-center gap-2 text-[#2C5F4A] hover:text-[#1E4A3A] transition group z-10 relative"
+          whileHover={!shouldReduceMotion ? { x: -4 } : {}}
+        >
+          <ArrowLeft size={20} className="transition-transform group-hover:-translate-x-1" />
+          <span>Back to codex</span>
+        </motion.button>
+
+        <motion.div
+          variants={!shouldReduceMotion ? { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } } : {}}
+          initial="hidden"
+          animate="visible"
+          transition={{ duration: 0.6 }}
+          className="bg-white rounded-lg shadow-xl border-l-4 border-[#2C5F4A] overflow-hidden relative"
+        >
+          <div className="relative h-48 md:h-64 bg-gradient-to-r from-[#2C5F4A]/20 to-[#2C5F4A]/5">
+            <img
+              src="/projects/ecommerce-cover.jpg"
+              alt="E-Commerce Platform preview"
+              className="w-full h-full object-cover opacity-90"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent" />
           </div>
-          <div className="bg-gray-800 p-6 rounded-lg border border-green-500">
-            <h2 className="text-2xl text-green-400 mb-4">Tech Stack</h2>
-            <ul className="space-y-2 text-gray-300">
-              <li>React + Redux</li>
-              <li>Node.js + Express</li>
-              <li>MongoDB</li>
-              <li>Stripe API</li>
-            </ul>
+
+          <div className="p-6 md:p-10">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+              <h1 className="text-4xl md:text-5xl font-light text-[#2C5F4A]">E-Commerce Platform</h1>
+              <div className="flex flex-wrap gap-3 text-sm">
+                <span className="flex items-center gap-1 bg-[#F5F2E8] px-3 py-1 rounded-full text-[#2D2D2D]">
+                  <Calendar size={14} /> 2024
+                </span>
+                <span className="flex items-center gap-1 bg-[#F5F2E8] px-3 py-1 rounded-full text-[#2D2D2D]">
+                  <User size={14} /> Full Stack
+                </span>
+              </div>
+            </div>
+
+            <p className="text-lg text-[#2D2D2D] leading-relaxed mb-8">
+              A fully functional e-commerce platform with user authentication, product management, shopping cart, 
+              and Stripe payments. Built as a demonstration of full-stack capabilities, including a RESTful API 
+              and a responsive React frontend.
+            </p>
+
+            <div className="grid md:grid-cols-2 gap-8 mb-8">
+              <div className="bg-[#F5F2E8] p-5 rounded-lg border border-[#2C5F4A]/20">
+                <h2 className="text-xl font-semibold text-[#2C5F4A] mb-3">Tech Stack</h2>
+                <ul className="space-y-2">
+                  {techStack.map((item) => (
+                    <li key={item} className="flex items-start gap-2">
+                      <span className="text-[#2C5F4A] mt-1">•</span>
+                      <span className="text-[#2D2D2D]">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="bg-[#F5F2E8] p-5 rounded-lg border border-[#2C5F4A]/20">
+                <h2 className="text-xl font-semibold text-[#2C5F4A] mb-3">Key Features</h2>
+                <ul className="space-y-2">
+                  {features.map((item) => (
+                    <li key={item} className="flex items-start gap-2">
+                      <span className="text-[#2C5F4A] mt-1">•</span>
+                      <span className="text-[#2D2D2D]">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="https://ecommerce-demo.vercel.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 bg-[#2C5F4A] text-white px-6 py-3 rounded-lg hover:bg-[#1E4A3A] transition"
+              >
+                <ExternalLink size={18} /> Live Demo
+              </a>
+              <a
+                href="https://github.com/yourusername/ecommerce-platform"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 border-2 border-[#2C5F4A] text-[#2C5F4A] px-6 py-3 rounded-lg hover:bg-[#2C5F4A]/10 transition"
+              >
+                <Github size={18} /> Source Code
+              </a>
+            </div>
           </div>
-        </div>
-        <div className="mt-12 text-center">
-          <a
-            href="https://ecommerce.example.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-cyan-600 hover:bg-cyan-700 text-black font-bold py-3 px-8 rounded-lg transition transform hover:scale-105"
-          >
-            View Demo <ExternalLink size={18} />
-          </a>
-        </div>
-      </motion.div>
+          <div className="absolute bottom-0 right-0 w-16 h-16 bg-[#2C5F4A]/10 clip-path-corner" />
+        </motion.div>
+      </div>
     </div>
   );
 };
 
-export default Portfolio2Realm;
+export default React.memo(Portfolio2Realm);

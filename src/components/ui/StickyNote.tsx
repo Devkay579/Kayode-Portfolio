@@ -28,16 +28,16 @@ const StickyNote = () => {
             
             <p className="font-bold text-[#2D2D2D] mb-2">Quick reach</p>
             <div className="flex justify-around">
-              <a href="mailto:your.email@example.com" className="text-[#2C5F4A] hover:scale-110 transition">
+              <a href="mailto:kayodeogbetah76@gmail.com" className="text-[#2C5F4A] hover:scale-110 transition">
                 <Mail size={20} />
               </a>
-              <a href="https://github.com/yourgithub" target="_blank" rel="noopener noreferrer" className="text-[#2C5F4A] hover:scale-110 transition">
+              <a href="https://github.com/devkay579" target="_blank" rel="noopener noreferrer" className="text-[#2C5F4A] hover:scale-110 transition">
                 <Github size={20} />
               </a>
-              <a href="https://linkedin.com/in/yourlinkedin" target="_blank" rel="noopener noreferrer" className="text-[#2C5F4A] hover:scale-110 transition">
+              <a href="https://linkedin.com/in/kay-ogbetah-b44a23323" target="_blank" rel="noopener noreferrer" className="text-[#2C5F4A] hover:scale-110 transition">
                 <Linkedin size={20} />
               </a>
-              <a href="https://twitter.com/yourtwitter" target="_blank" rel="noopener noreferrer" className="text-[#2C5F4A] hover:scale-110 transition">
+              <a href="https://x.com/kayode_oo" target="_blank" rel="noopener noreferrer" className="text-[#2C5F4A] hover:scale-110 transition">
                 <Twitter size={20} />
               </a>
             </div>

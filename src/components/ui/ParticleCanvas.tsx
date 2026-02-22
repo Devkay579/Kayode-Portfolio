@@ -12,13 +12,13 @@ const ParticleCanvas = () => {
     const resize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-      // Reinitialize particles on resize
-      particles.current = Array.from({ length: 30 }, () => ({
+      // Reinitialize particles with lower count (25)
+      particles.current = Array.from({ length: 25 }, () => ({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
         speed: Math.random() * 0.2 + 0.1,
         size: Math.random() * 1.5 + 0.5,
-        opacity: Math.random() * 0.3 + 0.1,
+        opacity: Math.random() * 0.3 + 0.1, // fixed opacity per particle
       }));
     };
     resize();
@@ -29,6 +29,7 @@ const ParticleCanvas = () => {
       particles.current.forEach(p => {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        // Use fixed opacity instead of random per frame
         ctx.fillStyle = `rgba(44, 95, 74, ${p.opacity})`;
         ctx.fill();
         p.y -= p.speed;
