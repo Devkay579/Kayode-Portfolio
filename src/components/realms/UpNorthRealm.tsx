@@ -32,7 +32,7 @@ const UpNorthRealm = () => (
         { src: '/projects/upnorth-treats-products.png', alt: 'UpNorth Treats product catalog', caption: 'Products' },
         { src: '/projects/upnorth-treats-about.png', alt: 'UpNorth Treats about page', caption: 'Our Story' },
       ],
-      liveUrl: 'https://upnorth-treats-demo.vercel.app',
+      liveUrl: 'https://upnorth-treats.vercel.app',
       repoUrl: 'https://github.com/yourusername/upnorth-treats',
     }}
   />
