@@ -1,8 +1,12 @@
 import React from 'react';
 import { ArrowUp, Github, Linkedin, Twitter, Mail } from 'lucide-react';
+import { useLocation } from 'react-router-dom';
 
 const Footer = () => {
   const year = new Date().getFullYear();
+  const location = useLocation();
+  const isHome = location.pathname === '/';
+  const sectionHref = (id: string) => (isHome ? `#${id}` : `/#${id}`);
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -25,7 +29,7 @@ const Footer = () => {
             {['about', 'skills', 'projects', 'contact'].map((item) => (
               <a
                 key={item}
-                href={`#${item}`}
+                href={sectionHref(item)}
                 className="text-sm text-[#8B8B8B] hover:text-[#2C5F4A] transition capitalize"
               >
                 {item}

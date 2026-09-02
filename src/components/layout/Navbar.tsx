@@ -1,12 +1,16 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, Volume2, VolumeX } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLocation } from 'react-router-dom';
 import { useSoundStore } from '../../store/soundStore';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const { muted, toggleMute } = useSoundStore();
+  const location = useLocation();
+  const isHome = location.pathname === '/';
+  const sectionHref = (id: string) => (isHome ? `#${id}` : `/#${id}`);
 
   useEffect(() => {
     let ticking = false;
@@ -36,7 +40,7 @@ const Navbar = () => {
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo */}
         <a
-          href="#hero"
+          href={sectionHref('hero')}
           onClick={handleLinkClick}
           className="relative group outline-none block w-8 h-8"
           aria-label="Go to top"
@@ -53,7 +57,7 @@ const Navbar = () => {
           {['about', 'skills', 'experience', 'education', 'projects', 'contact'].map((item) => (
             <a
               key={item}
-              href={`#${item}`}
+              href={sectionHref(item)}
               className="relative text-[#2D2D2D] hover:text-[#2C5F4A] capitalize transition-colors group"
             >
               {item}
@@ -94,7 +98,7 @@ const Navbar = () => {
               {['about', 'skills', 'experience', 'education', 'projects', 'contact'].map((item) => (
                 <a
                   key={item}
-                  href={`#${item}`}
+                  href={sectionHref(item)}
                   onClick={handleLinkClick}
                   className="text-[#2D2D2D] hover:text-[#2C5F4A] capitalize py-3 px-3 rounded-lg hover:bg-[#2C5F4A]/10 transition text-left touch-manipulation"
                 >

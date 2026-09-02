@@ -5,6 +5,10 @@ const ParticleCanvas = () => {
   const particles = useRef<Array<{ x: number; y: number; speed: number; size: number; opacity: number }>>([]);
 
   useEffect(() => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const pointerFine = window.matchMedia('(pointer: fine)').matches;
+    if (prefersReducedMotion || !pointerFine || window.innerWidth < 768) return;
+
     const canvas = canvasRef.current!;
     const ctx = canvas.getContext('2d')!;
     let animationFrame: number;
@@ -22,7 +26,7 @@ const ParticleCanvas = () => {
       }));
     };
     resize();
-    window.addEventListener('resize', resize);
+    window.addEventListener('resize', resize, { passive: true });
 
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);

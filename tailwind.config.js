@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['"Cabinet Grotesk"', 'sans-serif'],
+        sans: ['"Bricolage Grotesque"', 'sans-serif'],
         mono: ['"Fira Code"', 'monospace'],
       },
       animation: {

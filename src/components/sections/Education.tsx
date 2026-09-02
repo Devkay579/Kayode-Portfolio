@@ -7,15 +7,8 @@ const education = [
     degree: 'B.Sc. Computer Science',
     institution: 'Federal University Oye-Ekiti',
     grade: 'Second Class Upper (2:1)',
-    period: '2014 – 2018',
-    details: 'Specialized in software engineering. Thesis on interactive UI systems. Graduated with honors.',
-
-  },
-  {
-    degree: 'Web Development Bootcamp',
-    institution: 'Andela Learning Community',
-    period: '2019',
-    details: 'Intensive full‑stack program covering React, Node.js, and agile methodologies.',
+    period: '2025',
+    details: 'Served as a media assistant for the National Association of Computer Science Students (NACOS).',
   },
 ];
 

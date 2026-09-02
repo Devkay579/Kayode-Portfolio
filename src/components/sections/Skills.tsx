@@ -1,9 +1,9 @@
 import SectionWrapper from '../ui/SectionWrapper';
 import { useMemo } from 'react';
 import { motion } from 'framer-motion';
-import { 
-  SiReact, SiTypescript, SiNestjs, SiPrisma, 
-  SiTailwindcss, SiFramer, SiPostgresql, SiNodedotjs 
+import {
+  SiReact, SiTypescript, SiJavascript, SiNextdotjs, SiNestjs, SiPrisma,
+  SiTailwindcss, SiFramer, SiPostgresql, SiNodedotjs, SiAdobephotoshop
 } from 'react-icons/si';
 
 
@@ -12,13 +12,16 @@ const Skills = () => {
 
   const skills = useMemo(() => [
   { name: 'React', icon: SiReact, color: '#61DAFB' },
+  { name: 'Next.js', icon: SiNextdotjs, color: '#000000' },
   { name: 'TypeScript', icon: SiTypescript, color: '#3178C6' },
+  { name: 'JavaScript', icon: SiJavascript, color: '#F7DF1E' },
   { name: 'NestJS', icon: SiNestjs, color: '#E0234E' },
   { name: 'Prisma', icon: SiPrisma, color: '#2D3748' },
   { name: 'Tailwind', icon: SiTailwindcss, color: '#06B6D4' },
   { name: 'Framer', icon: SiFramer, color: '#0055FF' },
   { name: 'PostgreSQL', icon: SiPostgresql, color: '#336791' },
   { name: 'Node.js', icon: SiNodedotjs, color: '#339933' },
+  { name: 'Photoshop', icon: SiAdobephotoshop, color: '#31A8FF' },
 ], []);
 
 

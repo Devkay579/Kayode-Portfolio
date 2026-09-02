@@ -1,6 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@6..144,200..800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -9,7 +8,7 @@
 body {
   background-color: #F5F2E8;
   color: #2D2D2D;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Bricolage Grotesque', sans-serif;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
   background-repeat: repeat;
 }
@@ -84,6 +83,15 @@ body {
 }
 .clip-path-corner {
   clip-path: polygon(0 100%, 100% 100%, 0 0);
+}
+.torn-edge {
+  clip-path: polygon(
+    0% 0%, 100% 0%, 100% 100%,
+    95% 30%, 90% 100%, 85% 40%, 80% 100%, 75% 30%, 70% 100%,
+    65% 40%, 60% 100%, 55% 30%, 50% 100%, 45% 40%, 40% 100%,
+    35% 30%, 30% 100%, 25% 40%, 20% 100%, 15% 30%, 10% 100%,
+    5% 40%, 0% 100%
+  );
 }
 
 /* Custom scrollbar */

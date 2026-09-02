@@ -16,6 +16,28 @@ const projects = [
     color: '#2C5F4A',
   },
   {
+    id: 'price',
+    title: 'Price Pulse',
+    year: '2026',
+    role: 'Full Stack Developer',
+    shortDesc: 'Product-based price tracking platform',
+    longDesc: 'A NestJS + React product system for tracking prices, collecting user contributions, and scoring credibility, with account management.',
+    tags: ['React', 'NestJS', 'PostgreSQL'],
+    image: '/projects/price.jpg', 
+    color: '#2C5F4A',
+  },
+  {
+    id: 'upnorth',
+    title: 'UpNorth Treats',
+    year: '2026',
+    role: 'Full Stack Developer',
+    shortDesc: 'E-commerce platform with order and payment flow',
+    longDesc: 'A Next.js fullstack business app with user accounts, add-to-cart, order management, and Paystack payment integration.',
+    tags: ['Next.js', 'React', 'NestJS', 'PostgreSQL'],
+    image: '/projects/upnorth.png',
+    color: '#2C5F4A',
+  },
+  {
     id: 'port1',
     title: 'Grace-Portfolio',
     year: '2025',
@@ -28,13 +50,13 @@ const projects = [
   },
   {
     id: 'port2',
-    title: 'Kay-Portfolio',
-    year: '2024',
-    role: 'Developer',
-    shortDesc: 'A modern portfolio',
-    longDesc: 'Clean, responsive portfolio with smooth animations',
-    tags: ['React', 'Tailwind', 'Framer'],
-    image: '/projects/port2.jpg',
+    title: 'Alafia Suites',
+    year: '2026',
+    role: 'Full Stack Developer',
+    shortDesc: 'Boutique hotel booking platform',
+    longDesc: 'A full-stack hotel booking system with real-time availability, room search, and a Naira-priced checkout flow.',
+    tags: ['Next.js', 'PostgreSQL', 'Prisma'],
+    image: '/projects/alafia-suites.png',
     color: '#2C5F4A',
   },
   {
@@ -81,7 +103,16 @@ const Projects = () => {
                     className="absolute inset-0 backface-hidden bg-white rounded-lg shadow-xl overflow-hidden border border-[#2C5F4A]/30"
                     style={{ backfaceVisibility: 'hidden' }}
                   >
-                    <div className="h-2/3 bg-[#2C5F4A]/10 relative">
+                    <div className="h-2/3 bg-[#2C5F4A]/10 relative overflow-hidden">
+                      <img
+                        src={project.image}
+                        alt={`${project.title} preview`}
+                        className="absolute inset-0 w-full h-full object-cover"
+                        loading="lazy"
+                        onError={(e) => {
+                          e.currentTarget.style.display = 'none';
+                        }}
+                      />
                       <div className="absolute inset-0 bg-gradient-to-br from-[#2C5F4A]/20 to-transparent" />
                       {/* Decorative corner */}
                       <div className="absolute top-0 right-0 w-16 h-16 bg-[#2C5F4A] clip-path-corner" />

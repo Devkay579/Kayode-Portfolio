@@ -8,25 +8,28 @@ const soundFiles = {
   wrong: '/sounds/wrong.mp3',
   click: '/sounds/click.mp3',
   distraction: '/sounds/distraction.mp3',
-  ambient: '/sounds/ambient.mp3', // new ambient loop
+  ambient: '/sounds/ambient.mp3', 
   hover: '/sounds/hover.mp3'
 };
 
 const sounds: Record<keyof typeof soundFiles, Howl> = {} as any;
+let soundsPreloaded = false;
 
 for (const [key, src] of Object.entries(soundFiles)) {
   sounds[key as keyof typeof soundFiles] = new Howl({
     src,
     preload: false,
-    loop: key === 'ambient', // only ambient loops
+    loop: key === 'ambient', 
     volume: key === 'ambient' ? 0.3 : 0.8, // lower volume for background
   });
 }
 
 export const preloadSounds = () => {
+  if (soundsPreloaded) return;
   Object.values(sounds).forEach(sound => {
     if (sound.state() === 'unloaded') sound.load();
   });
+  soundsPreloaded = true;
 };
 
 export const playSound = (name: keyof typeof soundFiles, options?: { volume?: number }) => {

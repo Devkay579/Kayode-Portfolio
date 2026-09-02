@@ -21,6 +21,10 @@ const CustomCursor = () => {
   const handleMouseEnter = () => setIsVisible(true);
 
   useEffect(() => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const pointerFine = window.matchMedia('(pointer: fine)').matches;
+    if (!pointerFine || prefersReducedMotion) return;
+
     window.addEventListener('mousemove', moveCursor);
     window.addEventListener('mousedown', handleMouseDown);
     window.addEventListener('mouseup', handleMouseUp);
