@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useState, lazy, Suspense } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import ProgressBar from './components/ui/ProgressBar';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
@@ -148,6 +149,7 @@ function App() {
   return (
     <BrowserRouter>
       <AppContent />
+      <Analytics />
     </BrowserRouter>
   );
 }
