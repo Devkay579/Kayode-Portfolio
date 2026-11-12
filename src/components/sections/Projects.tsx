@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import SectionWrapper from '../ui/SectionWrapper';
+import SectionHeading from '../ui/SectionHeading';
 import { motion } from 'framer-motion';
 import { ExternalLink, ChevronRight } from 'lucide-react';
 
@@ -38,17 +39,6 @@ const projects = [
     color: '#2C5F4A',
   },
   {
-    id: 'port1',
-    title: 'Grace-Portfolio',
-    year: '2025',
-    role: 'Developer',
-    shortDesc: 'Grace-portfolio',
-    longDesc: 'Clean, responsive portfolio with smooth animations.',
-    tags: ['React', 'Tailwind', 'Framer'],
-    image: '/projects/port1.jpg',
-    color: '#2C5F4A',
-  },
-  {
     id: 'port2',
     title: 'Alafia Suites',
     year: '2026',
@@ -60,35 +50,52 @@ const projects = [
     color: '#2C5F4A',
   },
   {
-    id: 'landing',
-    title: 'Landing Page Project',
-    year: '2025',
-    role: 'Developer',
-    shortDesc: 'High-conversion landing',
-    longDesc: 'Clean landing page with scroll-triggered animations.',
-    tags: ['React', 'Shadcn', 'Tailwind', 'Framer'],
-    image: '/projects/landing.jpg',
+    id: 'nailhive',
+    title: 'THENAILHIVE',
+    year: '2026',
+    role: 'Full Stack Developer',
+    shortDesc: 'Nail studio booking platform with admin dashboard',
+    longDesc: 'A Next.js + Supabase salon app with a step-by-step booking wizard, "book this look" from the gallery, deposit tracking, automated email reminders, an installable PWA, and an admin dashboard for bookings, clients, messages and revenue.',
+    tags: ['Next.js', 'Supabase', 'Tailwind'],
+    image: '/projects/nailhive.jpg',
+    color: '#2C5F4A',
+  },
+  {
+    id: 'port1',
+    title: 'Aletan Folaranmi',
+    year: '2026',
+    role: 'Frontend Developer',
+    shortDesc: 'Personal brand site for a social media manager',
+    longDesc: 'A responsive portfolio for a Lagos social media manager, with an experience timeline, skills, certifications, a CV download, a Formspree contact form and light/dark mode.',
+    tags: ['React', 'TypeScript', 'Tailwind', 'Framer'],
+    image: '/projects/aletan-folaranmi.jpg',
     color: '#2C5F4A',
   },
 ];
 
 const Projects = () => {
   const [flippedId, setFlippedId] = useState<string | null>(null);
+  const [brokenImages, setBrokenImages] = useState<Set<string>>(new Set());
 
   return (
-    <section id="projects" className="py-20 px-4 bg-[#E8E2D5]">
-      <div className="container mx-auto max-w-6xl">
-        <SectionWrapper>
-          <h2 className="text-4xl md:text-5xl font-light mb-12 text-[#2C5F4A] border-b-2 border-[#2C5F4A] pb-2 inline-block">
-            Projects
-          </h2>
-        </SectionWrapper>
+    <section id="projects" className="section">
+      <div className="page">
+        <SectionHeading
+          index="05"
+          label="Projects"
+          title={
+            <>
+              Selected <em className="italic text-forest">work</em>
+            </>
+          }
+          intro="Hover or tap a card to flip it, then open the full case study."
+        />
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-x-8 gap-y-10">
           {projects.map((project, index) => (
             <SectionWrapper key={project.id} delay={index * 0.1}>
               <motion.div
-                className="relative h-80 cursor-pointer group perspective"
+                className="relative h-[22rem] sm:h-[24rem] cursor-pointer group [perspective:1400px]"
                 onHoverStart={() => setFlippedId(project.id)}
                 onHoverEnd={() => setFlippedId(null)}
                 onClick={() => setFlippedId(flippedId === project.id ? null : project.id)}
@@ -100,52 +107,62 @@ const Projects = () => {
                 >
                   {/* Front face – book cover */}
                   <div
-                    className="absolute inset-0 backface-hidden bg-white rounded-lg shadow-xl overflow-hidden border border-[#2C5F4A]/30"
+                    className="absolute inset-0 card overflow-hidden flex flex-col"
                     style={{ backfaceVisibility: 'hidden' }}
                   >
-                    <div className="h-2/3 bg-[#2C5F4A]/10 relative overflow-hidden">
-                      <img
-                        src={project.image}
-                        alt={`${project.title} preview`}
-                        className="absolute inset-0 w-full h-full object-cover"
-                        loading="lazy"
-                        onError={(e) => {
-                          e.currentTarget.style.display = 'none';
-                        }}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-br from-[#2C5F4A]/20 to-transparent" />
+                    <div className="relative flex-1 min-h-0 bg-forest/10 overflow-hidden">
+                      {brokenImages.has(project.id) ? (
+                        <div className="absolute inset-0 grid place-items-center bg-gradient-to-br from-forest to-forest-dark">
+                          <span className="font-display italic text-5xl text-paper/90">{project.title}</span>
+                        </div>
+                      ) : (
+                        <img
+                          src={project.image}
+                          alt={`${project.title} preview`}
+                          className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
+                          loading="lazy"
+                          onError={() => setBrokenImages((prev) => new Set(prev).add(project.id))}
+                        />
+                      )}
                       {/* Decorative corner */}
-                      <div className="absolute top-0 right-0 w-16 h-16 bg-[#2C5F4A] clip-path-corner" />
+                      <div className="absolute top-0 right-0 w-14 h-14 bg-forest clip-path-corner" />
                     </div>
-                    <div className="p-4">
-                      <h3 className="text-xl font-bold text-[#2C5F4A]">{project.title}</h3>
-                      <p className="text-sm text-[#8B8B8B]">{project.year} · {project.role}</p>
-                      <p className="mt-2 text-[#2D2D2D]">{project.shortDesc}</p>
-                    </div>
-                    <div className="absolute bottom-2 right-2 text-[#2C5F4A]">
-                      <ChevronRight className="inline" /> flip
+                    <div className="px-6 py-5 border-t border-ink/[0.06]">
+                      <div className="flex items-baseline justify-between gap-4">
+                        <h3 className="font-display text-2xl text-ink leading-tight">{project.title}</h3>
+                        <span className="font-mono text-xs text-ink-muted shrink-0">{project.year}</span>
+                      </div>
+                      <p className="mt-1 text-ink-soft">{project.shortDesc}</p>
+                      <p className="mt-3 flex items-center justify-between text-xs font-medium text-ink-muted">
+                        <span>{project.role}</span>
+                        <span className="inline-flex items-center gap-0.5 text-forest">
+                          Flip <ChevronRight size={14} />
+                        </span>
+                      </p>
                     </div>
                   </div>
 
                   {/* Back face  */}
                   <div
-                    className="absolute inset-0 backface-hidden bg-[#FDF8E7] rounded-lg shadow-xl p-6 overflow-y-auto border border-[#2C5F4A]/30"
+                    className="absolute inset-0 rounded-2xl bg-paper-cream border border-forest/20 shadow-xl p-7 sm:p-8 overflow-y-auto flex flex-col"
                     style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
                   >
-                    <h3 className="text-xl font-bold text-[#2C5F4A] mb-2">{project.title}</h3>
-                    <p className="text-sm text-[#2D2D2D] mb-3">{project.longDesc}</p>
-                    <div className="flex flex-wrap gap-2 mb-4">
+                    <p className="eyebrow mb-3">{project.year} · {project.role}</p>
+                    <h3 className="font-display text-3xl text-ink leading-tight mb-3">{project.title}</h3>
+                    <p className="text-ink-soft leading-relaxed mb-5">{project.longDesc}</p>
+                    <div className="flex flex-wrap gap-2 mb-6">
                       {project.tags.map(tag => (
-                        <span key={tag} className="px-2 py-1 bg-white text-xs rounded border border-[#2C5F4A]/30">
+                        <span key={tag} className="px-2.5 py-1 bg-white font-mono text-[0.6875rem] text-ink-soft rounded-full border border-ink/10">
                           {tag}
                         </span>
                       ))}
                     </div>
                     <a
                       href={`/realm/${project.id}`}
-                      className="inline-flex items-center gap-1 text-[#2C5F4A] hover:underline"
+                      onClick={(e) => e.stopPropagation()}
+                      className="btn-primary mt-auto self-start"
                     >
-                      View case study <ExternalLink size={14} />
+                      View case study <ExternalLink size={15} />
                     </a>
                   </div>
                 </motion.div>

@@ -1,89 +1,92 @@
 import { motion } from 'framer-motion';
-
+import { ArrowDownRight, Download, MapPin } from 'lucide-react';
 
 const Hero = () => {
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden px-4 py-8 md:py-0">
+    <section id="hero" className="relative overflow-hidden pt-28 pb-20 md:pt-36 md:pb-28 min-h-[92vh] flex items-center">
       {/* Paper texture overlay */}
       <div className="absolute inset-0 bg-[url('/paper-texture.png')] opacity-20 mix-blend-multiply pointer-events-none" />
-      
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center z-10">
+
+      <div className="page relative z-10 grid grid-cols-1 md:grid-cols-[1.35fr_1fr] gap-14 md:gap-10 items-center">
         {/* Left column */}
         <motion.div
-          initial={{ opacity: 0, x: -30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center md:text-left"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 text-[#2D2D2D] tracking-tight">
-            Kayode Ogbetah
+          <p className="eyebrow flex items-center gap-3 mb-6">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full rounded-full bg-forest opacity-60 motion-safe:animate-ping" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-forest" />
+            </span>
+            Full-stack developer
+          </p>
+
+          <h1 className="font-display text-[3.25rem] leading-[0.95] sm:text-7xl md:text-[5.5rem] font-normal tracking-[-0.035em] text-ink mb-7">
+            Kayode
+            <br />
+            <span className="italic font-light text-forest">Ogbetah</span>
           </h1>
-          <p className="text-lg sm:text-xl md:text-2xl text-[#2C5F4A] mb-6 font-light max-w-2xl mx-auto md:mx-0">
-            Full-stack developer specializing in immersive web experiences, memory‑driven apps, and modular, scalable architectures.
+
+          <p className="text-lg sm:text-xl text-ink-soft leading-relaxed max-w-xl mb-9">
+            I build immersive web experiences, memory-driven apps and modular, scalable
+            products, from the database to the last pixel.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-            <motion.a
-              href="#projects"
-              whileHover={{ scale: 1.05, backgroundColor: '#2C5F4A', color: '#F5F2E8' }}
-              className="border-2 border-[#2C5F4A] text-[#2C5F4A] px-8 py-3 rounded-lg font-medium transition"
-            >
-              View Work
-            </motion.a>
-            <motion.a
-              href="/cv/Kayode-Ogbetah-CV.pdf"
-              download="Kayode-Ogbetah-CV.pdf"
-              whileHover={{ scale: 1.05 }}
-              className="bg-[#2D2D2D] text-[#F5F2E8] px-8 py-3 rounded-lg font-medium hover:bg-[#1E1E1E] transition"
-            >
-              Resume
-            </motion.a>
+
+          <div className="flex flex-col sm:flex-row gap-3">
+            <a href="#projects" className="btn-primary group">
+              View work
+              <ArrowDownRight size={18} className="transition-transform group-hover:translate-x-0.5 group-hover:translate-y-0.5" />
+            </a>
+            <a href="/cv/Kayode-Ogbetah-CV.pdf" download="Kayode-Ogbetah-CV.pdf" className="btn-ghost">
+              <Download size={17} /> Résumé
+            </a>
           </div>
-          <p className="mt-4 text-[#2C5F4A]/60 italic">
-            Code. Create. Conquer.
-          </p>
+
+          <dl className="mt-12 flex flex-wrap gap-x-10 gap-y-4 border-t border-ink/10 pt-6 text-sm">
+            <div>
+              <dt className="text-ink-muted">Based in</dt>
+              <dd className="mt-0.5 font-medium text-ink flex items-center gap-1.5">
+                <MapPin size={14} className="text-forest" /> Lagos, Nigeria
+              </dd>
+            </div>
+            <div>
+              <dt className="text-ink-muted">Experience</dt>
+              <dd className="mt-0.5 font-medium text-ink">2+ years</dd>
+            </div>
+            <div>
+              <dt className="text-ink-muted">Motto</dt>
+              <dd className="mt-0.5 font-display italic text-forest">Code. Create. Conquer.</dd>
+            </div>
+          </dl>
         </motion.div>
 
         {/* Right column */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
+          initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative w-full max-w-sm mx-auto mt-8 md:mt-0"
+          transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+          className="relative mx-auto w-full max-w-[19rem] md:max-w-sm"
         >
-          {/* Main image container */}
-          <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 mx-auto rounded-full overflow-hidden border-4 border-[#2C5F4A] shadow-xl">
-            <img
-              src="/images/kay.jpg" 
-              alt="Kayode"
-              className="w-full h-full object-cover"
-            />
+          {/* Offset frame behind the portrait */}
+          <div className="absolute inset-0 translate-x-4 translate-y-4 rounded-[2rem] border border-forest/40" aria-hidden />
+          <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] bg-paper-deep shadow-2xl shadow-forest/15">
+            <img src="/images/kay.jpg" alt="Kayode Ogbetah" className="h-full w-full object-cover" />
           </div>
 
-          {/* Floating elements */}
           <motion.div
-            animate={{ y: [0, -8, 0] }}
-            transition={{ repeat: Infinity, duration: 3 }}
-            className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 w-12 h-12 sm:w-14 sm:h-14 bg-[#2C5F4A]/10 rounded-full flex items-center justify-center text-[#2C5F4A] font-bold border border-[#2C5F4A] backdrop-blur-sm text-sm sm:text-base will-change-transform"
+            animate={{ y: [0, -6, 0] }}
+            transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
+            className="absolute -left-5 bottom-10 card px-4 py-3 will-change-transform"
           >
-            <span>2+</span>
+            <p className="font-display text-2xl leading-none text-forest">6</p>
+            <p className="mt-1 text-xs text-ink-muted">featured projects</p>
           </motion.div>
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ repeat: Infinity, duration: 4 }}
-            className="absolute -bottom-1 -left-1 sm:-bottom-2 sm:-left-2 w-8 h-8 sm:w-10 sm:h-10 bg-[#2C5F4A]/10 rounded-full flex items-center justify-center text-[#2C5F4A] border border-[#2C5F4A] backdrop-blur-sm will-change-transform"
-          >
-            <span className="text-xs sm:text-sm"></span>
-          </motion.div>
-          <motion.div
-            animate={{ rotate: 360 }}
-            transition={{ repeat: Infinity, duration: 20, ease: 'linear' }}
-            className="absolute top-1/2 -left-4 sm:-left-6 w-4 h-4 sm:w-5 sm:h-5 border-2 border-[#2C5F4A]/30 rounded-full"
-          />
         </motion.div>
       </div>
 
       {/* Page corner decoration */}
-      <div className="absolute bottom-0 right-0 w-20 h-20 sm:w-32 sm:h-32 bg-[#2C5F4A] opacity-10 rounded-tl-[80px] sm:rounded-tl-[100px]" />
+      <div className="absolute bottom-0 right-0 w-20 h-20 sm:w-32 sm:h-32 bg-forest opacity-10 rounded-tl-[80px] sm:rounded-tl-[100px]" />
     </section>
   );
 };

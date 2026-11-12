@@ -42,8 +42,8 @@ export interface RealmData {
   story?: RealmStory;
   quote?: string;
   gallery?: RealmImage[];
-  liveUrl: string;
-  repoUrl: string;
+  liveUrl?: string;
+  repoUrl?: string;
 }
 
 const RealmLayout = ({ data }: { data: RealmData }) => {
@@ -151,12 +151,12 @@ const RealmLayout = ({ data }: { data: RealmData }) => {
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 pb-6 border-b border-black/5">
               <div>
                 <h1
-                  className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-2"
+                  className="font-display text-4xl sm:text-5xl md:text-6xl font-normal tracking-[-0.025em] leading-[1.02] mb-3"
                   style={{ color: accent }}
                 >
                   {title}
                 </h1>
-                <p className="text-stone-500 font-medium text-sm sm:text-base">
+                <p className="font-mono text-xs uppercase tracking-[0.18em] text-ink-muted">
                   Project Case Study
                 </p>
               </div>
@@ -175,7 +175,7 @@ const RealmLayout = ({ data }: { data: RealmData }) => {
             </div>
 
             {/* Overview Description */}
-            <p className="text-base sm:text-lg text-stone-700 leading-relaxed mb-10 max-w-3xl">
+            <p className="text-lg sm:text-xl text-ink-soft leading-relaxed mb-12 max-w-3xl">
               {description}
             </p>
 
@@ -194,7 +194,7 @@ const RealmLayout = ({ data }: { data: RealmData }) => {
                   style={{ color: accent }}
                 />
                 <p
-                  className="italic text-lg sm:text-xl font-serif leading-relaxed relative z-10"
+                  className="italic text-xl sm:text-2xl font-display leading-relaxed relative z-10"
                   style={{ color: accent }}
                 >
                   &ldquo;{quote}&rdquo;
@@ -230,12 +230,12 @@ const RealmLayout = ({ data }: { data: RealmData }) => {
                         </span>
                       </div>
                       <h3
-                        className="font-bold text-base mb-2 tracking-wide"
+                        className="font-display text-xl font-normal mb-2"
                         style={{ color: accent }}
                       >
                         {heading}
                       </h3>
-                      <p className="text-xs sm:text-sm text-stone-600 leading-relaxed">
+                      <p className="text-sm sm:text-[0.9375rem] text-ink-soft leading-relaxed">
                         {text}
                       </p>
                     </div>
@@ -249,7 +249,7 @@ const RealmLayout = ({ data }: { data: RealmData }) => {
               {/* Tech Stack */}
               <div className="bg-[#F5F2E8]/60 p-6 rounded-2xl border border-stone-200/80">
                 <h2
-                  className="text-lg font-bold mb-4 flex items-center gap-2"
+                  className="font-display text-2xl font-normal mb-5 flex items-center gap-2.5"
                   style={{ color: accent }}
                 >
                   <Layers size={20} /> Tech Stack
@@ -270,14 +270,14 @@ const RealmLayout = ({ data }: { data: RealmData }) => {
               {/* Key Features */}
               <div className="bg-[#F5F2E8]/60 p-6 rounded-2xl border border-stone-200/80">
                 <h2
-                  className="text-lg font-bold mb-4 flex items-center gap-2"
+                  className="font-display text-2xl font-normal mb-5 flex items-center gap-2.5"
                   style={{ color: accent }}
                 >
                   <ListChecks size={20} /> Key Features
                 </h2>
                 <ul className="space-y-2.5">
                   {features.map((item) => (
-                    <li key={item} className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-700">
+                    <li key={item} className="flex items-start gap-2.5 text-sm sm:text-[0.9375rem] text-ink-soft">
                       <CheckCircle2
                         size={16}
                         className="shrink-0 mt-0.5"
@@ -294,7 +294,7 @@ const RealmLayout = ({ data }: { data: RealmData }) => {
             {gallery && gallery.length > 0 && (
               <div className="mb-12">
                 <h2
-                  className="text-lg font-bold mb-4 flex items-center gap-2"
+                  className="font-display text-2xl font-normal mb-5 flex items-center gap-2.5"
                   style={{ color: accent }}
                 >
                   <Images size={20} /> Screenshots
@@ -337,7 +337,9 @@ const RealmLayout = ({ data }: { data: RealmData }) => {
             )}
 
             {/* Action CTAs */}
+            {(liveUrl || repoUrl) && (
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+              {liveUrl && (
               <a
                 href={liveUrl}
                 target="_blank"
@@ -350,6 +352,8 @@ const RealmLayout = ({ data }: { data: RealmData }) => {
               >
                 <ExternalLink size={18} /> Live Demo
               </a>
+              )}
+              {repoUrl && (
               <a
                 href={repoUrl}
                 target="_blank"
@@ -363,7 +367,9 @@ const RealmLayout = ({ data }: { data: RealmData }) => {
               >
                 <Github size={18} /> Source Code
               </a>
+              )}
             </div>
+            )}
           </div>
         </motion.div>
       </div>

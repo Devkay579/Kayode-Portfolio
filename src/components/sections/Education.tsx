@@ -1,6 +1,6 @@
 import SectionWrapper from '../ui/SectionWrapper';
-import { motion } from 'framer-motion';
-import { GraduationCap, Award, Calendar } from 'lucide-react';
+import SectionHeading from '../ui/SectionHeading';
+import { GraduationCap, Award } from 'lucide-react';
 
 const education = [
   {
@@ -12,54 +12,36 @@ const education = [
   },
 ];
 
-const Education = () => {
-  return (
-    <section id="education" className="py-20 px-4">
-      <div className="container mx-auto max-w-5xl">
-        <SectionWrapper>
-          <h2 className="text-4xl md:text-5xl font-light mb-12 text-[#2C5F4A] border-b-2 border-[#2C5F4A] pb-2 inline-block">
-            Education
-          </h2>
-        </SectionWrapper>
+const Education = () => (
+  <section id="education" className="section bg-paper-deep">
+    <div className="page">
+      <SectionHeading index="04" label="Education" title="Foundations" />
 
-        <div className="grid md:grid-cols-2 gap-8">
-          {education.map((edu, index) => (
-            <SectionWrapper key={index} delay={index * 0.1}>
-              <motion.div
-                whileHover={{ rotate: [0, -0.5, 0.5, 0], scale: 1.02 }}
-                transition={{ type: 'spring', stiffness: 200 }}
-                className="bg-white rounded-lg shadow-xl overflow-hidden relative"
-                style={{
-                  backgroundImage: 'linear-gradient(145deg, #FFFFFF 0%, #F5F2E8 100%)',
-                }}
-              >
-        
-                <div className="h-2 bg-gradient-to-r from-[#2C5F4A] to-[#1E4A3A]" />
-
-                <div className="p-6">
-                  <div className="flex items-center gap-2 mb-3">
-                    <GraduationCap className="text-[#2C5F4A]" size={28} />
-                    <h3 className="text-2xl font-bold text-[#2D2D2D]">{edu.degree}</h3>
-                  </div>
-                  <p className="text-[#2C5F4A] font-medium mb-1">{edu.institution}</p>
-                  <div className="flex items-center gap-4 text-sm text-[#8B8B8B] mb-3">
-                    <span className="flex items-center gap-1"><Calendar size={14} /> {edu.period}</span>
-                    {edu.grade && (
-                      <span className="flex items-center gap-1"><Award size={14} /> {edu.grade}</span>
-                    )}
-                  </div>
-                  <p className="text-[#2D2D2D] leading-relaxed">{edu.details}</p>
-                </div>
-
-                {/* Decorative corner fold */}
-                <div className="absolute bottom-0 left-0 w-12 h-12 bg-gradient-to-tr from-[#2C5F4A]/20 to-transparent clip-path-corner" />
-              </motion.div>
-            </SectionWrapper>
-          ))}
-        </div>
+      <div className="grid md:grid-cols-2 gap-6">
+        {education.map((edu, index) => (
+          <SectionWrapper key={edu.degree} delay={index * 0.1}>
+            <article className="card relative overflow-hidden p-7 sm:p-8">
+              <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-forest to-forest-dark" />
+              <div className="flex items-start justify-between gap-4 mb-5">
+                <span className="grid h-11 w-11 place-items-center rounded-xl bg-forest/10 text-forest">
+                  <GraduationCap size={22} />
+                </span>
+                <span className="font-display text-3xl text-forest/80 leading-none">{edu.period}</span>
+              </div>
+              <h3 className="font-display text-2xl text-ink leading-tight">{edu.degree}</h3>
+              <p className="mt-1 font-semibold text-forest">{edu.institution}</p>
+              {edu.grade && (
+                <p className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-paper px-3 py-1 text-sm text-ink-soft">
+                  <Award size={14} className="text-forest" /> {edu.grade}
+                </p>
+              )}
+              <p className="mt-5 text-ink-soft leading-relaxed">{edu.details}</p>
+            </article>
+          </SectionWrapper>
+        ))}
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default Education;

@@ -33,49 +33,54 @@ const Navbar = () => {
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/80 backdrop-blur-md border-b border-[#2C5F4A]/30 shadow-sm'
-          : 'bg-transparent'
+          ? 'bg-paper/85 backdrop-blur-md border-b border-ink/[0.08]'
+          : 'bg-transparent border-b border-transparent'
       }`}
     >
-      <div className="container mx-auto px-4 py-3 flex items-center justify-between">
+      <div className="page py-3 flex items-center justify-between">
         {/* Logo */}
         <a
           href={sectionHref('hero')}
           onClick={handleLinkClick}
-          className="relative group outline-none block w-8 h-8"
-          aria-label="Go to top"
+          className="group flex items-center gap-3"
+          aria-label="Kayode Ogbetah, go to top"
         >
           <img
             src="/images/kay.jpg"
-            alt="Kayode Ogbetah"
-            className="w-full h-full object-cover rounded-full transition-transform duration-300 group-hover:scale-110"
+            alt=""
+            className="w-9 h-9 object-cover rounded-full ring-2 ring-forest/20 transition-transform duration-300 group-hover:scale-105"
           />
+          <span className="font-display text-lg text-ink leading-none hidden sm:block">
+            Kayode <span className="italic text-forest">O.</span>
+          </span>
         </a>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-6">
-          {['about', 'skills', 'experience', 'education', 'projects', 'contact'].map((item) => (
+        <div className="hidden md:flex items-center gap-1">
+          {['about', 'skills', 'experience', 'education', 'projects'].map((item) => (
             <a
               key={item}
               href={sectionHref(item)}
-              className="relative text-[#2D2D2D] hover:text-[#2C5F4A] capitalize transition-colors group"
+              className="px-3 py-2 text-[0.9375rem] text-ink-soft hover:text-forest capitalize transition-colors rounded-full"
             >
               {item}
-              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-[#2C5F4A] transition-all duration-300 group-hover:w-full" />
             </a>
           ))}
           <button
             onClick={toggleMute}
-            className="text-[#2D2D2D] hover:text-[#2C5F4A] transition-colors p-2 rounded-full hover:bg-[#2C5F4A]/10"
+            className="ml-1 text-ink-soft hover:text-forest transition-colors p-2 rounded-full hover:bg-forest/10"
             aria-label={muted ? 'Unmute' : 'Mute'}
           >
-            {muted ? <VolumeX size={20} /> : <Volume2 size={20} />}
+            {muted ? <VolumeX size={18} /> : <Volume2 size={18} />}
           </button>
+          <a href={sectionHref('contact')} className="btn-primary ml-2 !px-5 !py-2 text-sm">
+            Contact
+          </a>
         </div>
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-[#2C5F4A] p-2 hover:bg-[#2C5F4A]/10 rounded-lg transition z-[60]"
+          className="md:hidden text-forest p-2 hover:bg-forest/10 rounded-full transition z-[60]"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle menu"
         >
@@ -91,16 +96,16 @@ const Navbar = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden fixed left-0 right-0 top-[57px] bg-white border-b border-[#2C5F4A]/30 shadow-lg z-[55]"
-            style={{ top: '57px' }}
+            className="md:hidden fixed left-0 right-0 top-[61px] bg-paper border-b border-ink/10 shadow-lg z-[55]"
+            
           >
-            <div className="container mx-auto px-4 py-4 flex flex-col">
+            <div className="page py-4 flex flex-col">
               {['about', 'skills', 'experience', 'education', 'projects', 'contact'].map((item) => (
                 <a
                   key={item}
                   href={sectionHref(item)}
                   onClick={handleLinkClick}
-                  className="text-[#2D2D2D] hover:text-[#2C5F4A] capitalize py-3 px-3 rounded-lg hover:bg-[#2C5F4A]/10 transition text-left touch-manipulation"
+                  className="font-display text-xl text-ink hover:text-forest capitalize py-3 px-3 rounded-lg hover:bg-forest/10 transition text-left touch-manipulation"
                 >
                   {item}
                 </a>
@@ -110,7 +115,7 @@ const Navbar = () => {
                   toggleMute();
                   handleLinkClick();
                 }}
-                className="flex items-center gap-2 text-[#2D2D2D] hover:text-[#2C5F4A] text-left py-3 px-3 rounded-lg hover:bg-[#2C5F4A]/10 transition touch-manipulation"
+                className="flex items-center gap-2 text-ink-soft hover:text-forest text-left py-3 px-3 rounded-lg hover:bg-forest/10 transition touch-manipulation"
               >
                 {muted ? <VolumeX size={20} /> : <Volume2 size={20} />}
                 <span>{muted ? 'Unmute' : 'Mute'}</span>

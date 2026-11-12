@@ -4,8 +4,18 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['"Bricolage Grotesque"', 'sans-serif'],
-        mono: ['"Fira Code"', 'monospace'],
+        display: ['"Fraunces"', 'Georgia', 'serif'],
+        sans: ['"Instrument Sans"', 'system-ui', 'sans-serif'],
+        mono: ['"JetBrains Mono"', '"Fira Code"', 'monospace'],
+      },
+      // The existing palette, named so it can be used consistently.
+      colors: {
+        paper: { DEFAULT: '#F5F2E8', deep: '#E8E2D5', cream: '#FDF8E7' },
+        ink: { DEFAULT: '#2D2D2D', soft: '#4A4A4A', muted: '#6B6B6B', faint: '#8B8B8B' },
+        forest: { DEFAULT: '#2C5F4A', dark: '#1E4A3A' },
+      },
+      maxWidth: {
+        page: '72rem',
       },
       animation: {
         'glow': 'glow 2s ease-in-out infinite',

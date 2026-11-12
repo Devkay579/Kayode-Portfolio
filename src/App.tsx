@@ -17,7 +17,7 @@ const StickyNote = lazy(() => import('./components/ui/StickyNote'));
 const GhostCodeRealm = lazy(() => import('./components/realms/GhostCodeRealm'));
 const Portfolio1Realm = lazy(() => import('./components/realms/Portfolio1Realm'));
 const Portfolio2Realm = lazy(() => import('./components/realms/Portfolio2Realm'));
-const LandingProjectRealm = lazy(() => import('./components/realms/LandingProjectRealm'));
+const NailHiveRealm = lazy(() => import('./components/realms/NailHiveRealm'));
 const PricePulseRealm = lazy(() => import('./components/realms/PricePulseRealm'));
 const UpNorthRealm = lazy(() => import('./components/realms/UpNorthRealm'));
 
@@ -132,9 +132,9 @@ function AppContent() {
               <Route path="/realm/ghost" element={<GhostCodeRealm />} />
               <Route path="/realm/price" element={<PricePulseRealm />} />
               <Route path="/realm/upnorth" element={<UpNorthRealm />} />
-              <Route path="/realm/port1" element={<Portfolio1Realm />} />
               <Route path="/realm/port2" element={<Portfolio2Realm />} />
-              <Route path="/realm/landing" element={<LandingProjectRealm />} />
+              <Route path="/realm/nailhive" element={<NailHiveRealm />} />
+              <Route path="/realm/port1" element={<Portfolio1Realm />} />
             </Routes>
           </Suspense>
         </motion.div>
